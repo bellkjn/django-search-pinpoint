@@ -142,3 +142,18 @@ CACHES = {
         "LOCATION": "unique-snowflake",
     }
 }
+
+
+# pinpoint
+# https://github.com/pinpoint-apm/pinpoint-c-agent/tree/master/DOC/PY
+
+from pinpointPy import monkey_patch_for_pinpoint, set_agent
+
+MIDDLEWARE.insert(0, "pinpointPy.Django.DjangoMiddleWare")
+
+# enable auto-interceptor plugins
+monkey_patch_for_pinpoint()
+
+# set pinpoint related environment
+set_agent("django-search-1","DJANGO-SEARCH",'tcp:localhost:9999',-1)
+

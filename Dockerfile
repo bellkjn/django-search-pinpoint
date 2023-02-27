@@ -1,5 +1,5 @@
 # Pull base image
-FROM python:3.9
+FROM python:3.11.2
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -7,6 +7,8 @@ ENV PYTHONUNBUFFERED 1
 
 # Set work directory
 WORKDIR /code
+
+RUN apt update; apt install -y cmake 
 
 # Install dependencies
 COPY requirements.txt /code/
